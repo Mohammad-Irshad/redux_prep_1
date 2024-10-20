@@ -2,22 +2,22 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 export const fetchBooks = createAsyncThunk("books/fetchBooks", async () => {
-    const response = await axios.get("http://localhost:3000/books")
+    const response = await axios.get("https://redux-prep-1backend.vercel.app/books")
     return response.data
 })
 
 export const addBook = createAsyncThunk("book/addBook", async (bookData) => {
-    const response = await axios.post("http://localhost:3000/books", bookData)
+    const response = await axios.post("https://redux-prep-1backend.vercel.app/books", bookData)
     return(response.data)
 })
 
 export const deleteBook = createAsyncThunk("book/deleteBook", async (bookId) => { 
-    const response = await axios.delete(`http://localhost:3000/books/${bookId}`)
+    const response = await axios.delete(`https://redux-prep-1backend.vercel.app/books/${bookId}`)
     return response.data
 })
 
 export const updateBook = createAsyncThunk("book/updateBook", async ({bookId, updatedData}) => {
-    const response = await axios.patch(`http://localhost:3000/book/update/${bookId}`, updatedData)
+    const response = await axios.patch(`https://redux-prep-1backend.vercel.app/book/update/${bookId}`, updatedData)
     return response.data
 })
 
