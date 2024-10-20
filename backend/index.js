@@ -5,8 +5,11 @@ const app = express();
 const { initializeDatabase } = require("./db/db.connection");
 const { TheBooks } = require("./models/books.model");
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
+app.use(cors({
+  origin: 'https://redux-prep-1frontend.vercel.app' // allow your frontend
+}));
 
 initializeDatabase();
 
