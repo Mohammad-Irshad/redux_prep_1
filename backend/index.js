@@ -8,7 +8,19 @@ const { TheBooks } = require("./models/books.model");
 app.use(cors());
 app.use(express.json());
 
-initializeDatabase();
+// initializeDatabase();
+
+
+initializeDatabase().then(() => {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}).catch((error) => {
+  console.error("Failed to connect to the database", error);
+});
+
+
 
 app.get("/", (req, res) => {
   res.send("Hello, Express!");
@@ -70,7 +82,7 @@ app.patch("/book/update/:id", async (req, res) => {
     }
 })
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });

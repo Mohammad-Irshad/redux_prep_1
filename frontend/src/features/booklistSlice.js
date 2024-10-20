@@ -11,7 +11,7 @@ export const addBook = createAsyncThunk("book/addBook", async (bookData) => {
     return(response.data)
 })
 
-export const deleteBook = createAsyncThunk("book/deleteBook", async (bookId) => {
+export const deleteBook = createAsyncThunk("book/deleteBook", async (bookId) => { 
     const response = await axios.delete(`http://localhost:3000/books/${bookId}`)
     return response.data
 })
